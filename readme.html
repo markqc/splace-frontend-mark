@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Splace — WordPress Developer Assessment</title>
+	<style>
+		body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; max-width: 760px; margin: 40px auto; padding: 0 20px; line-height: 1.6; color: #1d2327; }
+		h1 { border-bottom: 2px solid #2271b1; padding-bottom: 10px; }
+		h2 { color: #2271b1; margin-top: 32px; }
+		code { background: #f0f0f1; padding: 2px 6px; border-radius: 3px; }
+		ol, ul { padding-left: 24px; }
+		table { border-collapse: collapse; width: 100%; }
+		th, td { border: 1px solid #dcdcde; padding: 8px 12px; text-align: left; }
+		th { background: #f0f0f1; }
+	</style>
+</head>
+<body>
+	<h1>Splace — WordPress Developer Assessment</h1>
+	<p>This repository contains a WordPress developer assessment built on a local MAMP environment. It includes a custom theme (<code>wp-content/themes/splace-assessment</code>) covering both the front-end and back-end tasks, plus a full database backup so the site can be reproduced locally.</p>
+
+	<h2>What's included</h2>
+	<ul>
+		<li>A full WordPress installation configured for local development with MAMP.</li>
+		<li>A custom theme, <strong>splace-assessment</strong>, with:
+			<ul>
+				<li>A responsive navigation bar that folds into a menu button on smaller screens.</li>
+				<li>Three property cards showing prices, addresses, property details, status labels, and availability.</li>
+				<li>A review slider with six sample reviews — three visible on desktop, two on tablet, one on mobile — with arrow and dot navigation.</li>
+				<li>Font Awesome icons, Bootstrap, and the Open Sans font.</li>
+				<li>A custom <code>splace_job</code> post type with archive and single templates for the back-end task.</li>
+			</ul>
+		</li>
+		<li><code>db-backup.sql</code> — a mysqldump backup of the local <code>db_splacefront</code> database.</li>
+		<li><code>front-end-wordpress-assessment-guide.md</code> — setup steps and a plain-language explanation of every theme file.</li>
+	</ul>
+
+	<h2>Setup</h2>
+	<ol>
+		<li>Clone this repository into your MAMP web root.</li>
+		<li>Start the MAMP servers, then open phpMyAdmin and create a database named <code>db_splacefront</code>.</li>
+		<li>Import <code>db-backup.sql</code> into that database.</li>
+		<li>Copy <code>wp-config-sample.php</code> to <code>wp-config.php</code> and set <code>DB_NAME</code> to <code>db_splacefront</code>, <code>DB_USER</code> / <code>DB_PASSWORD</code> to your MAMP credentials (default <code>root</code> / <code>root</code>).</li>
+		<li>Open the local site URL shown by MAMP and sign in to the dashboard.</li>
+		<li>Activate the <strong>splace-assessment</strong> theme under <em>Appearance &rarr; Themes</em> if it isn't already active.</li>
+		<li>Visit the homepage to see the property cards and review slider, and <em>/jobs/</em> for the back-end post type.</li>
+	</ol>
+
+	<h2>Key theme files</h2>
+	<table>
+		<tr><th>File</th><th>Purpose</th></tr>
+		<tr><td><code>front-page.php</code></td><td>Homepage with the property cards and review slider.</td></tr>
+		<tr><td><code>header.php</code> / <code>footer.php</code></td><td>Shared layout: site name, navigation, footer.</td></tr>
+		<tr><td><code>style.css</code></td><td>Theme identity, colors, fonts, and responsive layout.</td></tr>
+		<tr><td><code>functions.php</code></td><td>Asset loading (Bootstrap, Font Awesome, Open Sans) and the Jobs post type setup.</td></tr>
+		<tr><td><code>assets/site.js</code></td><td>Slider behavior and favorite (heart) toggles.</td></tr>
+		<tr><td><code>archive-splace_job.php</code> / <code>single-splace_job.php</code></td><td>Jobs listing and single-job templates (back-end task).</td></tr>
+	</table>
+
+	<h2>Notes</h2>
+	<ul>
+		<li>Property images are placeholder SVG illustrations; reviews are sample content.</li>
+		<li><code>wp-config.php</code> is intentionally excluded via <code>.gitignore</code> since it contains local credentials.</li>
+	</ul>
+</body>
+</html>
